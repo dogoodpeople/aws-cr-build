@@ -1,0 +1,34 @@
+name: "AWS CR Build"
+description: "AWS CR Build"
+inputs:
+  url: 
+    description: "url server"
+    required: true
+  namespace: 
+    description: "namespace name"
+    required: true
+  imagename: 
+    description: "image name"
+    required: true
+  buildnr: 
+    description: "build nr"
+    required: true
+  dir:
+    description: "dir to dockerfile"
+    required: true
+  dockerfile:
+    description: "dockerfile name"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.url }}
+    - ${{ inputs.namespace }}
+    - ${{ inputs.imagename }}
+    - ${{ inputs.buildnr }}
+    - ${{ inputs.dir }}
+    - ${{ inputs.dockerfile }}
+branding:
+  color: 'green'
+  icon: 'at-sign'
